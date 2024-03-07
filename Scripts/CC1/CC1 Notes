@@ -1,0 +1,49 @@
+Script:         Populate CC1 from Appraisal
+Author:         Ruben Powar
+Date:           22-Feb-2024
+
+
+Files:
+    PopulateCC1.py
+    InsertTable.py
+    GetMaps.py
+    GetMapInfo.py
+Key Libraries:
+    docxtpl
+    docx
+    openpyxl
+    googlemaps
+
+Description:
+
+This script is designed to auto-generate a CC1 from an appraisal.
+It processes an appraisal produced by someone on the Lending team.
+The inputs are included in an excel file produced by the person appraising the proposal.
+There should be a standardised set of sheets, which are linked to the bespoke appraisals for each person.
+    Coversheet:
+        This pulls data from the appraisal model. This is core data for the appraisal.
+        This data should eventually be entered into a database of appraisals. database should link metrics
+    Tables Sheet:
+        This will contain all other tables that are required for the CC1.
+        It will be comprised of multiple labelled tables to be copied into CC1
+        e.g. Accommodation schedule, Track Record, Appraisal, Indicative Terms, Cashflow, etc.
+
+
+
+
+Explanation:
+
+The script PopulateCC1.py is called, requiring the filepath of the appraisal and supporting doc destination
+(main) It opens a template (in future to be dependent on type of appraisal)
+(get_context) the context is produced, extracted from coversheet, the Tables sheet, using InsertTable.py
+Static maps are generated using GetMaps.py, and amenities text is produces using GetMapInfo.py
+The resulting context is returned to (output_to_file) which then populates the loaded template, and saves
+do the original filepath.
+
+Future Modifications:
+
+
+
+
+The CC1 Generation scripts are broken down as follows:
+    Main body = PopulateCC1.py
